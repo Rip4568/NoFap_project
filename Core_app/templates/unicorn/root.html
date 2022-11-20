@@ -1,11 +1,31 @@
 {% load unicorn %}
 <div>
   {% unicorn 'navbar' %}
-  <h1>COMPONENTE ROOT CARREGADO</h1>
-  <p>usuario logado : {{user.is_authenticated}}</p>
-  {% if user.is_authenticated %} <a href="/accounts/logout">logout</a>
-  {% else %}
-  <a href="/accounts/login">login</a> ou
-  <a href="/accounts/signup/">registre-se</a>
-  {% endif %}
+  <div class="container">
+    <h2 class="text-center" style="color: white;">Seja bem vindo ao seu progresso do mes NoFap Setember</h2>
+    <div class="container">
+      {% if eh_setembro_root %}
+      
+      {% for dia in setembro_root.dias.all %}
+      <button
+        type="button"
+        name=""
+        id=""
+        class="btn btn-{% if dia.estado == 'N' %}primary{% elif dia.estado == 'P' %}success{% else %}danger{% endif %}"
+        style="align-items: center; justify-content: space-between; margin: 1%"
+        unicorn:click='alteranar_estado_dia({{ dia.dia }})'
+      >
+      <input unicorn type="hidden">
+        {{dia.dia}}
+      </button>
+      {% endfor %}
+      <br>
+      <p class="d-inline" style="color: white;">Seja forte e resista as tentações, acredito em você :) </p>
+      {% else %}
+        <div class="container">
+          <h4 class="text-center" style="color:white;">Ainda não é setembro, espere pelo mês</h4>
+        </div>
+      {% endif %}
+    </div>
+  </div>
 </div>

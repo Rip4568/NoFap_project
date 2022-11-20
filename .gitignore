@@ -132,4 +132,5 @@ dmypy.json
 .vscode
 *.ps1
 ToDo.txt
-staticfiles
+staticfiles/
+ngrok.exe

@@ -26,11 +26,11 @@
     <!-- MDB -->
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
   </head>
-  <body>
+  <body style="background-color: rgb(5, 58, 58)">
     {% csrf_token %}
     <!-- Start your project here-->
-    <div class="container">
-      {% unicorn 'root' %}
+    <div class="">
+      {% unicorn 'root' setembro_root=setembro usuario_root=user%}
     </div>
     <!-- End your project here-->
 

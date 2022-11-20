@@ -8,17 +8,7 @@
   <body>
     {% block body %}
 
-    {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-
+{% comment %} 
     <div>
       <strong>Menu:</strong>
       <ul>
@@ -30,7 +20,7 @@
         <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
         {% endif %}
       </ul>
-    </div>
+    </div> {% endcomment %}
     {% block content %}
     {% endblock %}
     {% endblock %}

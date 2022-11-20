@@ -1,12 +1,18 @@
 {% load static %}
 <div>
-    <link rel="stylesheet" href="{% static 'css/navbarStyle.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbarStyle.css' %}" />
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg bg-white navbar-light">
+  <nav
+    id="navbar"
+    class="navbar navbar-expand-lg bg-aqua navbar-light"
+    style="background-color: rgb(11, 182, 182)">
     <!-- Container wrapper -->
     <div class="container-fluid">
       <!-- Navbar brand -->
-      <a class="navbar-brand" href="#">Brand</a>
+      <a
+        class="navbar-brand"
+        href="/"
+        style="font-size: 32px; font-family: cursive; color: white;">NoFap</a>
 
       <!-- Toggle button -->
       <button
@@ -16,8 +22,7 @@
         data-mdb-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+        aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
 
@@ -26,21 +31,28 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- Link -->
           <li class="nav-item">
-            <a class="nav-link" href="#">GitHub</a>
+            <a
+              class="nav-link"
+              href="https://github.com/Rip4568/NoFap_project/tree/master"
+              target="_blank"
+              >GitHub</a
+            >
           </li>
         </ul>
-
         <!-- Icons -->
-        <ul class="navbar-nav d-flex flex-row me-1">
+        {% if user.is_authenticated %}
+				<ul class="navbar-nav d-flex flex-row me-1">
           <li class="nav-item me-3 me-lg-0">
-            <a class="nav-link" href="#"
-              ><i class="fas fa-shopping-cart"></i
-            ></a>
-          </li>
-          <li class="nav-item me-3 me-lg-0">
-            <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+            <a name="" id="" class="btn btn-warning" href="/accounts/logout/" role="button">Sair</a>
           </li>
         </ul>
+				{% else %}
+				<ul class="navbar-nav d-flex flex-row me-1" style="gap: 5px">
+          <li class="nav-item me-3 me-lg-0">
+            <label for="">Faça login para entrar no nosso sistema ;)</label>
+          </li>
+        </ul>
+				{% endif %}
       </div>
     </div>
     <!-- Container wrapper -->
