@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     #appdjango
     'Core_app',
     #dependencias
+    'corsheaders',
     'django_extensions',
     'django_unicorn',
     'allauth',
@@ -34,6 +35,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,3 +111,13 @@ REGISTER_REDIRECT_URL = '/'
 SINGUP_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+ACCOUNT_FORMS = {
+    'login' : 'Core_app.forms.MyCustomLoginForm'
+}
+
+CSRF_TRUSTED_ORIGINS = [r'https://.*', r'https://*.', r'http://.*', r'http://*.']
+CORS_ALLOWED_ORIGINS = [
+    r'https://.*',
+    r'https://*.'
+]

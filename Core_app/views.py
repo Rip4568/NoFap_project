@@ -6,7 +6,6 @@ from django.views import View
 
 from .models import Setembro, Dia
 
-
 class HomeTemplateView(View):
     template_name = "Core_app/index.html"
     

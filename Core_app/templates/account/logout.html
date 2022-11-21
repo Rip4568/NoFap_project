@@ -1,21 +1,27 @@
-{% extends "account/base.html" %}
+{% extends "account/base.html" %} 
+{% load unicorn %} 
+{% load i18n %} 
+{% block head_title %}Sair{% endblock %}
+{% block content %} 
+{% unicorn 'navbar' %}
 
-{% load i18n %}
+<div class="container text-center">
+  <h1>Sair</h1>
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+  <p>Você tem certeza que deseja sair ?</p>
 
-{% block content %}
-<h1>{% trans "Sign Out" %}</h1>
-
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
-
-
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %} {% if redirect_field_value %}
+    <input
+      type="hidden"
+      name="{{ redirect_field_name }}"
+      value="{{ redirect_field_value }}"
+    />
+    {% endif %}
+    <button type="submit" class="btn btn-danger">Sim</button>
+    <a class="btn btn-success" href="{% url 'Core_app:home' %}" role="button"
+      >Voltar ao progresso</a
+    >
+  </form>
+</div>
 {% endblock %}

@@ -1,21 +1,53 @@
 {% extends "account/base.html" %}
 
+{% load unicorn %}
+
+{% load utils %}
+
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}Cadastro - NoFap{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+{% unicorn 'navbar' %}
+<div class="container-fluid text-center">
+  <h1>Cadastro</h1>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<p>Ja tem uma conta ? então faça <a href="{{ login_url }}">login</a>.</p>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+<form class="signup form-control container w-50" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  <p>Não se esqueça de verificar o campo usuario e senha</p>
   {% csrf_token %}
-  {{ form.as_p }}
+  
+  <!-- formulario de usuario -->
+  <div class="form-outline mb-4">
+    {{form.username|login_form_control}}
+    <label class="form-label" for="form1">{{form.username.label}}</label>
+  </div>
+
+  <!-- formulario para email -->
+  <div class="form-outline mb-4">
+    {{form.email|email_form_control}}
+    <label class="form-label" for="form2">{{form.email.label}}</label>
+  </div>
+  
+  <!-- formulario para o primeiro campo de password -->
+  <div class="form-outline mb-4">
+    {{form.password1|password_form_control}}
+    <label class="form-label" for="passwordForm">{{form.password1.label}}</label>
+  </div>
+
+  <!-- formulario para o segundo campo do password -->
+  <div class="form-outline mb-4">
+    {{form.password2|password2_form_control}}
+    <label class="form-label" for="passwordForm2">{{form.password2.label}}</label>
+  </div>
+
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <button type="submit" class="btn btn-primary w-50">Cadastrar</button>
 </form>
 
+</div>
 {% endblock %}
